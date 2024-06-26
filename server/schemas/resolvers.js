@@ -1,13 +1,16 @@
-const { model } = require('mongoose');
 const {User} = require ('../models');
 const { signToken, AuthenticationError } = require('../utils/auth'); 
 
 const resolvers = {
 
     Query: {
+
+      users: async () => {
+        return User.find();
+      },
       me: async (parent, args, context) => {
         if (context.user) {
-          const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+          const userData = await User.findOne({ _id: context.user._id })
           return userData;
         }
         throw new AuthenticationError('You are not logged in');
@@ -20,25 +23,25 @@ const resolvers = {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
-          },
+        },
         login: async (parent, { email, password }) => {
         const user = await User.findOne({ email });
     
         if (!user) {
-            throw AuthenticationError('User not found!');
+            throw AuthenticationError;
         }
     
         const correctPw = await user.isCorrectPassword(password);
     
         if (!correctPw) {
-            throw AuthenticationError('Wrong password!');
+            throw AuthenticationError;
         }
-
+    
         const token = signToken(user);
     
         return { token, user };
         },
-        
+    
         saveBook: async (parent, { addedBook }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
@@ -48,8 +51,7 @@ const resolvers = {
                 );
                 return updatedUser;
             }
-            throw AuthenticationError;
-            ('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
 
         removeBook: async (parent, { bookId }, context) => {
@@ -61,8 +63,7 @@ const resolvers = {
                 );
                 return updatedUser;
             }
-            throw AuthenticationError;
-            ('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
 
         }
 

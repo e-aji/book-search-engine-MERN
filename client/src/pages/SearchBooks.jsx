@@ -13,7 +13,7 @@ import {
   Row
 } from 'react-bootstrap';
 
-// import { saveBook, searchGoogleBooks } from '../utils/API';
+import {searchGoogleBooks } from '../utils/API';
 
 const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -33,9 +33,8 @@ const SearchBooks = () => {
       return false;
     }
 
-    /////// make changes 
     try {
-      const response = await fetch (`https://www.googleapis.com/books/v1/volumes?q=${searchInput}`);
+      const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -69,12 +68,10 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await saveBook(bookToSave, token);
+      const {data} = await saveBook(
+        {variables: {addedBook:{...bookToSave}},
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
+    });
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {

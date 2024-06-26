@@ -5,10 +5,10 @@ const typeDefs = `
         email: String
         password: String
         bookCount: Int
-        savedBooks: [Book]!
+        savedBooks: [Book]
     }
 
-    type bookSchema {
+    type Book {
         bookId: String
         authors: [String]
         description: String
@@ -32,6 +32,7 @@ const typeDefs = `
 
     type Query {
         me: User
+        users: [User]
     }
 
     type Mutation {

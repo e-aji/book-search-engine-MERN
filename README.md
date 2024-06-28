@@ -55,7 +55,7 @@ The aim of this project was to refactor a fully functioning Google Books API sea
 
 ## Usage 
 
-* Open link to the [application] (https://book-search-engine-mern-1-phhl.onrender.com/).
+* Open link to the [application](https://book-search-engine-mern-1-phhl.onrender.com/).
 * Once on the application, click on the Signup button and input into the relevant fields.
 * After signing up or logging in, the menu options update to include 'Search for Books', 'See Your Books, and 'Logout'. 
 * Once in, you can then search for a book in the 'Search for Books' area.

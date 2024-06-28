@@ -1,6 +1,8 @@
-# Book Search Engimne (MERN Stack)
+# Book Search Engine (MERN Stack)
 
 ## Description 
+
+The aim of this project was to refactor a fully functioning Google Books API search engine built with a RESTful API into one with a GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. The app allows users to signup and save book searches to the back end.
 
 ## Contents 
 
@@ -48,24 +50,31 @@
 
 ## Installation 
 
-* 
-* 
-* 
+* Run 'npm i' to install all dependencies 
+* Then run 'npm run develop' to concurrently run the 'watch' script in the server folder (to restart the server automatically whenever code changes are detected) and 'develop' script in the client folder which starts the development server for the client-side application. 
 
 ## Usage 
 
-* 
-* 
-* 
+* Open link to the [application] (https://book-search-engine-mern-1-phhl.onrender.com/).
+* Once on the application, click on the Signup button and input into the relevant fields.
+* After signing up or logging in, the menu options update to include 'Search for Books', 'See Your Books, and 'Logout'. 
+* Once in, you can then search for a book in the 'Search for Books' area.
+* Submit your search and a list of search results shoudl be displayed on the page.
+* Each result includes the book’s title, author, description, image, and an option to save the book.
+* To save a book, select the 'Save this Book!' button and the book should then be saved on your profile
+* Navigate to the saved books section by selecting 'See Your Books' in the menu and your saved books will be stored there.
+* The user is then able to delete the saved book from your saved list.
+* To logout, click the Logout button to end your session and revert to the default menu options of 'Search for Books' and 'Login/Signup'.
+
 
 ## Built With 
 
-* MongoDB
+* MongoDB/Mongoose
 * Express.js
 * React
 * Node.js
+* API
 * Npm 
-* 
 
 ## Images 
 
